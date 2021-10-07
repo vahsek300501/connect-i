@@ -8,6 +8,10 @@ app.use(express.json({ extended: false }));
 app.use(morgan('dev'));
 app.use(cors());
 
+// use express router
+app.use("/",require("./routes/index"));
+
+
 app.listen(port,(err)=>{
   if(err) {
     console.log(err);
