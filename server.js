@@ -1,14 +1,25 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
+const expressLayouts = require("express-ejs-layouts");
 const port = 3000;
 const app = express();
 
 app.use(express.json({ extended: false }));
 app.use(morgan('dev'));
 app.use(cors());
+
+// setting static files that is css and javascripts
+app.use(express.static('./assets'));
+
+app.use(expressLayouts);
+// extract styles and scripts from subpages into the layouts
+app.set('layout extractStyles',true);
+app.set('layout extractScripts',l̥true);
+
 app.set('view engine','ejs');
-app.set('views','./views');
+app.set('views','./views'); 
+
 // use express router
 app.use("/",require("./routes/index"));
 app.use("/user",require("./routes/user"));
