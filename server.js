@@ -22,7 +22,6 @@ app.set('views','./views');
 
 // use express router
 app.use("/",require("./routes/index"));
-app.use("/user",require("./routes/user"));
 
 app.listen(port,(err)=>{
   if(err) {
