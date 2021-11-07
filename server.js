@@ -1,10 +1,14 @@
 const express = require("express");
+const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const cors = require("cors");
 const expressLayouts = require("express-ejs-layouts");
 const port = 3000;
 const app = express();
 const mongooose = require("./config/config").db;
+
+app.use(express.urlencoded());
+app.use(cookieParser());
 
 app.use(express.json({ extended: false }));
 app.use(morgan('dev'));
